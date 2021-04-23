@@ -1,23 +1,36 @@
 import logo from './logo.svg';
 import './App.css';
+import {HttpService} from './service/httpservice';
+import {useEffect,useState} from 'react';
 
-function App() {
+function App(props) {
+  const serv = new HttpService();
+  const [categories,updateCategories]=useState([]);
+  const [products,updateProducts]=useState([]);
+
+  useEffect(()=>{
+    let catsPromise = serv.getCategories();
+    let prdsPromise = serv.getProducts();
+    Promise.all([catsPromise,prdsPromise])
+           .then((responses)=>{
+                updateCategories([...categories, responses[0].data]);
+                updateProducts([...products, responses[1].data]);
+           }).catch((error)=>{
+             console.log();
+           });
+  },[]);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <strong>{props.msg}</strong>
+      {
+        JSON.stringify(categories)
+      }
+    <hr/>
+    {
+      JSON.stringify(products)
+    }
     </div>
   );
 }

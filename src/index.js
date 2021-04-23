@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import PeroductServiceComponent from './components/productscomponents.jsx';
+import PromiseChaninComponent from  './components/promisechaincomponent.jsx';
+import PromiseAllComponent from './components/PromiseAllComponent.jsx';
+let data = "Mahesh";
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <PromiseAllComponent/>
   </React.StrictMode>,
   document.getElementById('root')
 );
