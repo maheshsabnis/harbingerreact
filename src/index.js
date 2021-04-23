@@ -6,10 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import PeroductServiceComponent from './components/productscomponents.jsx';
 import PromiseChaninComponent from  './components/promisechaincomponent.jsx';
 import PromiseAllComponent from './components/PromiseAllComponent.jsx';
+import ContainerComponent from './components/errordemocomponent';
+import ContainerWithErrorBoundryComponent from './components/errorboundryComponent';
 let data = "Mahesh";
 ReactDOM.render(
   <React.StrictMode>
-    <PromiseAllComponent/>
+    <ContainerWithErrorBoundryComponent/>
   </React.StrictMode>,
   document.getElementById('root')
 );
