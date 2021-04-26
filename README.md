@@ -22,5 +22,37 @@ p3
 # React 16.8+
 -  Functional Components with Hooks
     - Say bye bye to Class Components    
+- The Function that host the HTML as inline DOM 
+    - Reusable DOM w/o any state
+- The Funcation that returns HTML and can have following
+    - State
+        - UniDirectional Data Flow
+            - data will be flowned in one direction
+                - State Binding from Component to DOM
+                - Events Listenerer on DOM to State Properties
+    - Hooks for State
+        - useState()
+            - FUnction that accepts an initial state of and the Callback to mutate the state   
+                - useState(S:InitialState, CallBack)
+                    - CallBack: function(newState) {S=newState}
+                        - Mutate the Same Object DIrectly with newState
+                            - Pirmitive Types
+                                - S=newState 
+                                    - The Direct Value Overwrite
+                            - Object Types
+                                - If S = {id:1,name:''};     
+                                    - CallBack({STATE MUTATION for Each Property Seperately})
+                                    - CallBack({...S, property:newState})     
+                                -   function useState<T>(initialState: T | (() => T)): [T, Dispatch<SetStateAction<T>>];  
+                                    - Where T is State
+        - useEffect()
+            - The Combination of componentDidMount() and componentWillUnMount()
+                - useEffect(()=>{<Logic-to-be-executed-post-endering-LIKECOMPONENTDIDMOUNT>} return ()=> {<LOGIC-TO-BE-EXECUTED-DURING-COMPONENT-UNMOUNTING>}, [dependency-array-to-inform-that-the-state-is-changed])
+                    - [dependency-array-to-inform-that-the-state-is-changed]
+                        - this will inform the useEffect() that the state is modified so "STOP EXECUTING"                                   
+    - Props
+    - Events
+    - Lifecycle
+
 
 

@@ -8,10 +8,13 @@ import PromiseChaninComponent from  './components/promisechaincomponent.jsx';
 import PromiseAllComponent from './components/PromiseAllComponent.jsx';
 import ContainerComponent from './components/errordemocomponent';
 import ContainerWithErrorBoundryComponent from './components/errorboundryComponent';
+import SimpleFunctionalComponent from './hooks/simplefuncitonalcomponent';
+import FunctionalComponentWithProps from './hooks/FunctionalComponentWithProps';
+import StateComponent from './hooks/StateCompponent';
 let data = "Mahesh";
 ReactDOM.render(
   <React.StrictMode>
-    <ContainerWithErrorBoundryComponent/>
+    <StateComponent/>
   </React.StrictMode>,
   document.getElementById('root')
 );
