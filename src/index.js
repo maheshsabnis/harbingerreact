@@ -11,6 +11,7 @@ import ContainerWithErrorBoundryComponent from './components/errorboundryCompone
 import SimpleFunctionalComponent from './hooks/simplefuncitonalcomponent';
 import FunctionalComponentWithProps from './hooks/FunctionalComponentWithProps';
 import StateComponent from './hooks/StateCompponent';
+import ToggleComponent from './hooks/useEffectDemo/ToggleComponent';
 let data = "Mahesh";
 ReactDOM.render(
   <React.StrictMode>

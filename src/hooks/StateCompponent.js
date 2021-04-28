@@ -1,5 +1,8 @@
 import React, {useState,useEffect} from 'react'
 import { ProductHttpService } from "./../service/producthttpservice";
+import TableComponent from './tableComponent';
+import TableEventComponent from './tableEventComponent';
+import { DataContext } from "./dataContext";
 // immutable object managed by react on UI thread
 // for sharing datab across componentts
 const StateComponent=()=>{
@@ -11,8 +14,13 @@ const StateComponent=()=>{
     // initial State of emp is {EmpNo:0,EmpName:'',Salary:0, DeptName}
     const [emp, updateEmp] = useState({EmpNo:0,EmpName:'',Salary:0, DeptName:''}); 
     const departments =['IT', 'System', 'HRD'];
-    const [employees, updateEmployees] = useState([]);
-    const [products, setProducts] = useState([]);
+    const [employees, updateEmployees] = useState([
+        {EmpNo:0,EmpName:'',Salary:0, DeptName:''}
+    ]);
+    const [products, setProducts] = useState([ { ProductRowId:0, ProductId:'', ProductName:'', CategoryName:'', Manufacturer:'', Description:'', BasePrice:0}]);
+    const [product, setProduct] = useState({
+        ProductRowId:0, ProductId:'', ProductName:'', CategoryName:'', Manufacturer:'', Description:'', BasePrice:0
+    })
     const serv = new ProductHttpService();
 
     useEffect(()=>{
@@ -21,7 +29,7 @@ const StateComponent=()=>{
         }).catch((error)=>{
             console.log(`Error Occured ${error}`);
         });
-    },[]); // dependency array to infor the useEffect() that the state is modified and it can stop now
+    },[]); // dependency array to inform the useEffect() that the state is modified and it can stop now
 
 
     // expression method
@@ -98,15 +106,22 @@ const StateComponent=()=>{
             <br/>
             <input type="button" value="Clear" onClick={clear}/>
             <hr/>
+              <strong>
+                     Seleted Value from Child {JSON.stringify(product)}
+             </strong>       
+        <hr/>
             <div>Employees
-
-                <strong>
-                  {JSON.stringify(employees)}    
-                </strong>     
+                {/* Passing State to Child COmponent using Context
+                along with the callback */}
+                <DataContext.Provider value={{products,setProduct}}>
+                  <TableEventComponent></TableEventComponent>
+                </DataContext.Provider>     
+                  
             </div>
+
             <hr/>
             <div>
-                {JSON.stringify(products)}
+                {/* {JSON.stringify(products)} */}
             </div>
         </div>
     );
