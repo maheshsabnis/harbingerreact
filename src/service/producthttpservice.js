@@ -12,6 +12,14 @@ export class ProductHttpService {
         return response;
     }
 
+    getDataFromUrl(url){
+         
+        let response = axios.get(url);
+        return response;
+    }
+
+
+
     postProducts(prd){
         let response = axios.post(this.url, prd,{
             headers:{

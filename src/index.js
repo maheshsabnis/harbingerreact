@@ -12,10 +12,11 @@ import SimpleFunctionalComponent from './hooks/simplefuncitonalcomponent';
 import FunctionalComponentWithProps from './hooks/FunctionalComponentWithProps';
 import StateComponent from './hooks/StateCompponent';
 import ToggleComponent from './hooks/useEffectDemo/ToggleComponent';
+import CustomHookComponent from './hooks/customhookcomponent';
 let data = "Mahesh";
 ReactDOM.render(
   <React.StrictMode>
-    <StateComponent/>
+    <CustomHookComponent/>
   </React.StrictMode>,
   document.getElementById('root')
 );
