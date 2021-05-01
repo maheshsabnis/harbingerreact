@@ -54,5 +54,48 @@ p3
     - Events
     - Lifecycle
 
+# Using Redux
+    - npm install --save redux react-redux
+        - redux
+            - createStore() method
+                - Used to create a Global Application State Store Object
+                - createStore(reducer, middleware | parameterEnhancer)
+                    - reducer
+                        - combineReducer() object
+                            - Create an immutable object for all reducres so thatb they can be used at aplication level to monitor the application execution and updating Store accodingly
+                    - middleware
+                        - The applyMiddleware() method taht will encapsulate all Asynchornous Operations managed using
+                            - SAGA
+                            - THUNK
+                    - parameterEnhancer
+                        - a Custom Object ceated using 
+                        'compose()' object from redux package to create a union of multiple objects passed to the createStire() method. E.g. Middleware and Redux_TOOLS for browser extension   
+        - react-redux
+            - USed to Connect React Object Model with Redux Object Model for State Management.
+                - The 'connect(mapStateToProps, mapDispatchToProps)' method
+                    - mapStateToProps
+                        - map the State in STore with 'props' of compoent to show data from Store in component
+                        - A Subscription of Component with the Store
+                    - mapDispatchToProps
+                        - map the actions dispatched from UI so that action will be dispatched that will execte actio Creator with Sync and Async logic and generate output action with data (aka Payload). This output action and payload will be lusteded by reducer and reducer will update the payload inn state of the store      
+                - export default connect(mapStateToProps,mapDispatchToProps)(<COMPONENT-TO-BE-SUBSCRIBED>)
+            - Alternative to connect() ethod using Hoos oin Redux
+                - useDispatch(<ACTIOn-NAME>)
+                    - Dispatch an action from Component (same as mpDispatchToProps)
+                - useSelector(<STATE>)
+                    - Same as mapDispatchToProps  
+            - Provider
+                - The Component that is used to access the Redux store as input pareameter using its 'store' property.
+                - This component managed the lifecycle of all other react components in it by providing Redux store to all components in it.               
+    - Reducres
+        - The Monitor of Actions being dispatched
+        - Technically this is a JavaScript 'PURE FUNCTION'     
+        - Combine all reducers into a signle reducer object so that when any output action is dispatched with output data and monitored by reducer then the  store will be updated.                    
 
 
+# Date 01-May-2021
+
+1.  Modify the Solution that will perform the following
+    - Show the data in Table inside the ListProductsCompoent.
+    - When any row is seleted from the ListProductsComponent, the selected product information must be displayed in text elements of AddProductComponent.
+    - The AddProductComponent should have capacility to update the component and show this updated values in the ListProductsomponent 

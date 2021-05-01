@@ -1,22 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+
 import reportWebVitals from './reportWebVitals';
-import PeroductServiceComponent from './components/productscomponents.jsx';
-import PromiseChaninComponent from  './components/promisechaincomponent.jsx';
-import PromiseAllComponent from './components/PromiseAllComponent.jsx';
-import ContainerComponent from './components/errordemocomponent';
-import ContainerWithErrorBoundryComponent from './components/errorboundryComponent';
-import SimpleFunctionalComponent from './hooks/simplefuncitonalcomponent';
-import FunctionalComponentWithProps from './hooks/FunctionalComponentWithProps';
-import StateComponent from './hooks/StateCompponent';
-import ToggleComponent from './hooks/useEffectDemo/ToggleComponent';
-import CustomHookComponent from './hooks/customhookcomponent';
-let data = "Mahesh";
+import MainReduxComponent from './reduxapp/maincomponent';
+import reducers from "./reduxapp/reducers/index";
+
+// create a store using 'createStore()' method
+
+let store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__());
+
+ 
 ReactDOM.render(
   <React.StrictMode>
-    <CustomHookComponent/>
+    {/* The Provider will provide the store subscription for all components executing in it */}
+    <Provider store={store}>
+      <MainReduxComponent/>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
