@@ -91,7 +91,8 @@ p3
         - The Monitor of Actions being dispatched
         - Technically this is a JavaScript 'PURE FUNCTION'     
         - Combine all reducers into a signle reducer object so that when any output action is dispatched with output data and monitored by reducer then the  store will be updated.                    
-
+    - Using Thunk Middleware
+        - npm install --save redux-thunk
 
 # Date 01-May-2021
 
