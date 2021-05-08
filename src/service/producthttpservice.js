@@ -12,6 +12,14 @@ export class ProductHttpService {
         return response;
     }
 
+    getProductById(id){
+        // Promise<AxiosResponse>
+        // AxiosResponse, data is the data to be returned from the
+        // rest api
+        let response = axios.get(`${this.url}/${id}`);
+        return response;
+    }
+
     getDataFromUrl(url){
          
         let response = axios.get(url);

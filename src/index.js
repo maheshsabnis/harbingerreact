@@ -1,29 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
-import { createStore, applyMiddleware } from "redux";
-import { Provider } from "react-redux";
-// importing the thunk
-import thunk from 'redux-thunk';
-// import reducers
-import rootReducer from './reduxthunkapp/reducres/index'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-import MainReducThunkComponent from './reduxthunkapp/components/MainReduxThunkComponent'; 
-// import redux devtools to simulate redux with thunk in browser (MUST BE AOIDED IN PRODUCTSION)
-import { composeWithDevTools } from "redux-devtools-extension";
-
-// create a store using 'createStore()' method
-// and pass the composeWithDevTools for applying middleware to it
-// the 'thunk' object will monitor all async action excutions
-let store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
-
- 
+import PeroductServiceComponent from './components/productscomponents.jsx';
+import PromiseChaninComponent from  './components/promisechaincomponent.jsx';
+import PromiseAllComponent from './components/PromiseAllComponent.jsx';
+import ContainerComponent from './components/errordemocomponent';
+import ContainerWithErrorBoundryComponent from './components/errorboundryComponent';
+import SimpleFunctionalComponent from './hooks/simplefuncitonalcomponent';
+import FunctionalComponentWithProps from './hooks/FunctionalComponentWithProps';
+import StateComponent from './hooks/StateCompponent';
+import ToggleComponent from './hooks/useEffectDemo/ToggleComponent';
+import CustomHookComponent from './hooks/customhookcomponent';
+import { BrowserRouter } from 'react-router-dom';
+import RouterContainerComponent from './routingapp/routercontainercomponent';
+import UtilizerComponent from './codesplit/utilizercomponent';
+import LazyLoadHandlerComponent from './codesplit/liazyloadHandlerComponent';
+let data = "Mahesh";
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <MainReducThunkComponent/>
-    </Provider>
+    <LazyLoadHandlerComponent></LazyLoadHandlerComponent>
   </React.StrictMode>,
   document.getElementById('root')
 );

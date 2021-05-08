@@ -94,9 +94,77 @@ p3
     - Using Thunk Middleware
         - npm install --save redux-thunk
 
+    - Multi-Page Server Side Application
+        - Adv.
+            - Mutiple pages can have the React Component 
+            - Reactive UI with Rich UX
+        - Limitations
+            - Decide the no of COmponents to be renderd using 'one-server-side-page'    
+    - Deploy Front-End app and server-side app seperately
+        - Adv.
+            - Single Deployment for all components
+            - Independent App
+            - Easy for Maintenence
+        - Limitations
+            - Not easy to Represent as a Single-Page-App by default, the reason is React is Library and not a frwk
+    - React Router for SPA
+        - react-router-dom
+            - npm install --save react-router-dom
+        - BrowserRouter
+            - a Component that provides platform for navigation across components
+                - Router.Provder
+                    - The Context that is used to manage the navigation history for URL based Navigations as well as the explicit navigation request                        
+                        - history is a map objects from Router
+                        - Router is an object that contains the following information
+                            - Switch
+                                - The Dictionary of Route expressions
+                                - Route
+                                    - Object that contains following route metainfo
+                                        - exact
+                                            - the Query for Exact Path match
+                                        - path
+                                            - the URL for routing
+                                        - component
+                                            - The component to navigate to
+                                - Redirect
+                                    - object with 'to' property for default routing
+                                - Link
+                                    - Object with 'to' property for defing the route query
+            - The BrowserROuter is responsible for MOunting and UnMounting the Child COmponent in it i.e. lifecycle management                                             
+
+- Code-Splitting
+    - The concept for dividing the front0end logic in separate files
+    - The React Lazy Loading using following Objects
+        - React.lazy(callback);
+        - Suspense component
+            - This 'ExoticComponent'
+                - The component that will work under specificn conditions
+            - The Suspense component has the 'fallback' property
+                - THis property rebders the fallbak UI is the component is delayed
+    - Lazy Loading Recommendations
+        - Make sure that the component is loaded lazyly inside the ErroBoundry            
+    - Is using Routing then the Suspense component will be present inside the ROuter
+        - import {BrowserRouter as Router, Route, Switch}
+
+        <Router>
+            <Suspense fallback={}>
+               <Switch>
+                 <Route exact path="/" component={}></Route>
+               </Switch>
+            </Suspense>
+        </Router>         
+
+
+
+
 # Date 01-May-2021
 
 1.  Modify the Solution that will perform the following
     - Show the data in Table inside the ListProductsCompoent.
     - When any row is seleted from the ListProductsComponent, the selected product information must be displayed in text elements of AddProductComponent.
     - The AddProductComponent should have capacility to update the component and show this updated values in the ListProductsomponent 
+
+
+# Date 08-May-2021
+
+1. Integrate the Redux with Routing so that, the data from the Store will be used for Update and Delete COmponents. Means the Parameterized Route will query to the store to look for the data and load it in view for Update and Delete. Once the Update and Delete is successful after the REST call, then the store must be updated accodingly  
