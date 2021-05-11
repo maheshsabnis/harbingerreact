@@ -18,10 +18,19 @@ import { BrowserRouter } from 'react-router-dom';
 import RouterContainerComponent from './routingapp/routercontainercomponent';
 import UtilizerComponent from './codesplit/utilizercomponent';
 import LazyLoadHandlerComponent from './codesplit/liazyloadHandlerComponent';
+import BarchartComponent from './chartsdemos/barChart';
+import LineChartComponent from './chartsdemos/lineChart';
+import PieChartComponent from './chartsdemos/pieChart';
+import AppChangeComponent from './optimization/memoization';
+import CacheComponent from './optimization/cache';
+import ReactPracticeComponent from './optimization/explicitUpdateNotification';
+import ParentComponent from './optimization/callbackParentChild';
+
+ 
 let data = "Mahesh";
 ReactDOM.render(
   <React.StrictMode>
-    <LazyLoadHandlerComponent></LazyLoadHandlerComponent>
+     <ParentComponent></ParentComponent>
   </React.StrictMode>,
   document.getElementById('root')
 );

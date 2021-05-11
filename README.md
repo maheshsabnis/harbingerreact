@@ -155,6 +155,47 @@ p3
         </Router>         
 
 
+- Implement the shouldComponentyUpdate() explicitely to control the re-render calls or else derive the component from the React.PureComponent
+- When the Parent Component wants to attach a callback to the child component  then the Callback references gets executed for changes in Parent and child both components using 'props'. 
+
+``` javascript
+import React , {useState} from 'react';
+import { Fragment } from 'react';
+
+function ChildComponent(props){
+    return (
+        <div>
+            <h2>The Child Component</h2>
+            <button onClick={props.func}>Value in Child</button>
+        </div>
+    );
+}
+
+function ParentComponent(){
+    const [counter, setCounter] = useState(0);
+
+    return(
+        <Fragment>
+            <h1>The Parent Component</h1>
+            <button onClick={()=>setCounter(counter +1)}>Update Counter</button>
+            <hr />
+            {/* Binding the funciton from the parent compoen to the child component using the props */}
+            <ChildComponent func={()=>setCounter(counter+1)}></ChildComponent>
+            <hr />
+            <strong>
+                {counter}
+            </strong>
+        </Fragment>
+    );
+}
+
+
+export default ParentComponent;
+
+```
+
+in above case the child component will receive new instance of the 'func' props from parent for each re-rendering bacause of the state the proprty.
+- To avoid new instance for props for 'function callback' from parent to child, use th 'useCallback' hook. This hook will accept the dependency parameter and will memorize this parameter with function reference so that new props function callback instance will ne be passed again and agin from parent to child     
 
 
 # Date 01-May-2021

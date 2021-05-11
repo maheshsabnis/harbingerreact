@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import {reverse,sort} from './math'; // sync earli loading
 const UtilizerComponent=()=>{
 
@@ -9,7 +9,7 @@ const UtilizerComponent=()=>{
     }).catch((err)=>{
         console.log(`Module not FOund`);
     });
-
+    
 
     return (
         <div>
