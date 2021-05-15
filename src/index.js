@@ -25,12 +25,18 @@ import AppChangeComponent from './optimization/memoization';
 import CacheComponent from './optimization/cache';
 import ReactPracticeComponent from './optimization/explicitUpdateNotification';
 import ParentComponent from './optimization/callbackParentChild';
+import CallerComppnent from './optimization/reactmemo';
+import SessionComponent from './jwtsessions/sessioncomponent';
+import BarchartDemoComponent from './chartsapps/barchChartDemoComponent';
+import DataGridDemo from './materialapps/datagriddemocomponent';
+import DOMTestComponent from './componentfortest/domtestcomponent';
+import EventTestComponent from './componentfortest/eventtestcomponent';
 
  
 let data = "Mahesh";
 ReactDOM.render(
   <React.StrictMode>
-     <ParentComponent></ParentComponent>
+    <EventTestComponent></EventTestComponent>
   </React.StrictMode>,
   document.getElementById('root')
 );

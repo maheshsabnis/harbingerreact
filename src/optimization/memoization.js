@@ -14,12 +14,13 @@ function AppChangeComponent() {
     }
     
     const expFunc = (count)=> {
-        // waitSync(30000);
-        sleep(3000).then(()=>{console.log('I am done')});
+          waitSync(30000);
+       // sleep(3000).then(()=>{console.log('I am done')});
         return count * 90;
     }
-    const resCount = expFunc(count)
-
+    // update the state base on multiple of 90s
+  const resCount = expFunc(count)
+// the useMemo will cache the state  property till it is not been updated by any other action (event) or function
     const resCountMemo = useMemo(()=> {
         return expFunc(count)
     }, [count])

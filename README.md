@@ -195,9 +195,142 @@ export default ParentComponent;
 ```
 
 in above case the child component will receive new instance of the 'func' props from parent for each re-rendering bacause of the state the proprty.
-- To avoid new instance for props for 'function callback' from parent to child, use th 'useCallback' hook. This hook will accept the dependency parameter and will memorize this parameter with function reference so that new props function callback instance will ne be passed again and agin from parent to child     
+- To avoid new instance for props for 'function callback' from parent to child, use th 'useCallback' hook. This hook will accept the dependency parameter and will memorize this parameter with function reference so that new props function callback instance will ne be passed again and agin from parent to child   
+- Use Code Splitting for Lazy Loading usign React.lazy()
+- USe the spread on an object immutation for updating the same object by adding new values or updating a specific property from the object
+    - [...depts, dept]
+- Loading a list/table with large amount of data (please avoid) 
+    - react-virtualized or react-window
+
+# Managing the React App's Sessions w.r.t. Server Calls     
+    - Authenticate the React App user w.r.t. server using on the User Based Identity 
+        - The React App user MUST pass UserName and Password to the server
+    - Once the User is authentictaed the server MUST provide an Identity Key to the React App's current instance running in the browser
+        - The Identity MUST be the Token
+            - JSON Web Token (JWT)
+            - Any other Identity Token Value e.g. SAML Token from Azure AD, AWS Identity Tokens
+        - The React App must save this token in the Browser's process
+            - Browser's storages e.g. localStorage, sessionStorage, Redux Store
+        - Each call from the Reat App must carry this token so that teh Server Understands this token as a active session, then check for 'expiry' with the token validation and if the token is valid and not expired, then the resonse ti provided back to react app     
+        - If the token is expired close the session from server  
+# Creating RICH UI/UX apps using React.js
+- UI / UX Planning
+    - What is the complexity of UI requirements?
+        - Chart
+        - DataTable
+        - Large Volume List
+        - Diaglog Box
+    - What is the behavior Expected from UI (known as UX)?
+        - Charts must be of different types (Line, Bar, Pie). They must have data supplied in 2-D Array
+        - DataTable must generate rows and columns dynamically. Theer must exist pagination, sorting, serarch, ect. facilities.
+        - Large Volumn data List with Infine Scrilling with performance
+        - Transparent Div
+    - Is it possible to implement it using default object model of React.js?
+        - To implement it, the react must be known with Hands-on
+        - The complete knowledge of the React is required
+    - How much time it will take to implement it?
+        - MUST be planned 
+        - Use Third Party Libraries
+            - What about the Customize needs for the UI?
+    - How many developers will ne dedicated to implement?
+        - ?????
+    - Is this UI/UX is frequently required across pages?
+        - May be across one project in most of the pages
+        - Multiple Projects across organization
+    - What is the amount of data structres and propertis must be uses?
+        - Data Structure will help in providing structured data for UI and UX
+        - properties will help in defining behaviors and events for the UI and UX
+
+# Facts of React
+1. It is a Library for UI / View
+2. Uses Component(s) as a Compositional Pattern for the UI / UX
+3. Reusability is explicit based on UI / UX needs
+4. Data Properties are not inbuilt they must be defined using 'props' or 'context'        
+
+# Chart.js
+    - Library used to design charts in React Application
+    - react-chartjs-2 is the wrapper for Chart.js for React Apps
+    - Bar, Line, Pie Charts
+        - All these exposes the 'data' props
+            - data is the state for chart which acepts the charts data e.g. X & Y Axis Data, legends, title, etc.
+          - Flexi Chart creation
+            - Create a chart from Scratch
+# Data Driven Documents aka d3.js
+    - dimple.js
+    - c3.js
+# Creating Charts w/o having any dependency on Third-Party Libraries                
+    - HTMl 5 with either Canvas or SGV (Recommended) along with CSS3 to create charts
+
+# Creating RICH UI using Standard Libraries
+    - Option 1:
+        - Create all UI / UX yourself
+            - Adv: 
+                - You have complete control on design and implementation
+                - You can modify it as per the requirements
+                - Easy for developres to educate on it
+            - Limitations:
+                - If more time is taken to develop UI then this may delay the app dev. time limit
+                - The project MUST have dedicated team for creating such UI / US elements
+                - It must be necessray for you to allocate capable developres to implement this
+    - Option 2
+        - Use Third party library
+            - React Material UI aka Material UI
+            - Adv:
+                - Rich set of elements for UI
+                - Ready to use functionality
+                - Can be integrated easily in the application
+            Limitation:
+                - Afterall it is Open Source, you need to look for support for any customization
+                - This has seperate learning curve
+                - Any modification in behavior of existing UI element will require additional time and no gurantee of easy customization            
+        - Use or explore other thir party UI libs
+            https://www.codeinwp.com/blog/react-ui-component-libraries-frameworks/        
 
 
+# React Tetsting
+- DOM Tree Testing for Elements Rendering
+    - Create an in-memory proxy for DOM Tree
+    - Create a container element for DOM Tree
+    - Iterate over it 
+- DOM Testing w.r.t. Events
+    - Create an in-memory proxy for DOM Tree
+    - Create a container element for DOM Tree
+    - Iterate over it 
+    - Dispatch Events explicitely usign Code as Bubble event
+- @testing-library/jest-dom, @testing-library/react, @testing-library/user-event
+    - The bove libraries are availble only in 'create-react-app' CLI
+    - Integration between React and Jest for testing DOM in memory
+        - react-dom
+            - render() method
+                - Create a DOM and make it ready for Mount
+            - unmountComponentAtNode() method
+                - UnMount the DOM Tree from Memory
+        react-dom/test-utils
+            - The React Inbuild Testing Object Model
+            - the 'act' object, this is used to 
+                - Monitor DOM
+                - Iterate over the DOM
+                - Monitor Changes in DOM
+                - Look for Events on DOM elements        
+    - If the app is created from scracth w/o React CLI then for testing use following libraries created by React+Air BnB
+        - Enzyme
+        - React-Adapter-Enzyme-16    
+    - https://www.webnethelper.com/2019/08/configuring-reactjs-1687-application.html
+- The fine name containing test must be nameds as
+    - <Comppnent_Name>.test.js
+    - <Component_Name>.spec.js
+- to run init tests use the following command
+    - npm run test
+        - this will read all files as xxxx.test.js or xxxx.spec.js and exeute them 
+
+
+
+
+
+
+
+
+        
 # Date 01-May-2021
 
 1.  Modify the Solution that will perform the following
@@ -209,3 +342,6 @@ in above case the child component will receive new instance of the 'func' props 
 # Date 08-May-2021
 
 1. Integrate the Redux with Routing so that, the data from the Store will be used for Update and Delete COmponents. Means the Parameterized Route will query to the store to look for the data and load it in view for Update and Delete. Once the Update and Delete is successful after the REST call, then the store must be updated accodingly  
+
+# Date 15-May-2021
+1. Write a test on the React Component which will show /hide the div tag based on the button click
